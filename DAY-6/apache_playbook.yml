@@ -1,0 +1,27 @@
+---
+- name: Install, start, and check httpd using command module
+  hosts: demo
+  become: yes
+
+  tasks:
+
+    - name: Install httpd package
+      command: yum install -y httpd
+
+    - name: Start httpd service
+      command: systemctl start httpd
+
+    - name: Enable httpd on boot
+      command: systemctl enable httpd
+
+    - name: Restart httpd service
+      command: systemctl restart httpd
+
+    - name: Check httpd service status
+      command: systemctl status httpd
+      register: httpd_status
+      ignore_errors: yes
+
+    - name: Show httpd service status output
+      debug:
+        var: httpd_status.stdout
