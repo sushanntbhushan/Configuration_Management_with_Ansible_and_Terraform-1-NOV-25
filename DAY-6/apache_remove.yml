@@ -1,0 +1,9 @@
+---
+- name: Install, start, and check httpd using command module
+  hosts: demo
+  become: yes
+
+  tasks:
+
+    - name: Uninstall httpd package
+      command: yum remove -y httpd

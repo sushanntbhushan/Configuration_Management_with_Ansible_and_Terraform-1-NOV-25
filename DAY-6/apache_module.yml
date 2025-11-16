@@ -1,0 +1,12 @@
+---
+- name: Install, start, and check httpd using command module
+  hosts: demo
+  become: yes
+
+  tasks:
+
+    - name: Install  httpd package
+      action: yum name=httpd state=present
+      
+    - name: Start  httpd Service
+      action: service name=httpd state=started
